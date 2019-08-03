@@ -7,6 +7,14 @@
 let changeColor = document.getElementById('changeColor');
 let revertColor = document.getElementById('revertColor');
 let annotate    = document.getElementById('annotate');
+let currentURL;
+
+chrome.tabs.query(
+    {'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
+    function(tabs){
+      //getCurrentURL(tabs[0].url);
+      currentURL = tabs[0].url;
+});
 
 chrome.storage.sync.get('color', function(data) {
   changeColor.style.backgroundColor = data.color;
@@ -32,5 +40,5 @@ revertColor.onclick = ()=> {
 };
 
 annotate.onclick = ()=> {
-  confirm("ready to save?");
+  confirm("Confirm annotation for " + currentURL + " ?");
 };
