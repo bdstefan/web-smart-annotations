@@ -40,6 +40,23 @@ revertColor.onclick = ()=> {
   });
 };
 
-annotate.onclick = ()=> {
-  confirm("Confirm annotation for " + currentURL + " ?");
+let getRadioSelectedValue = (name) => {
+  let radios = document.getElementsByName(name);
+  for (let i = 0, length = radios.length; i < length; i++) {
+    if (radios[i].checked) {
+      return radios[i].value;
+    }
+  }
 };
+
+annotate.onclick = ()=> {
+  let annotationObject = {
+    'comment': document.getElementById('comment').value,
+    'trust': getRadioSelectedValue('trust'),
+    'realLocation': getRadioSelectedValue('location')
+  };
+
+  localStorage.setItem('annotation_' + currentURL, JSON.stringify(annotationObject));
+  alert("Annotation save.")
+};
+
