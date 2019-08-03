@@ -5,6 +5,7 @@
 'use strict';
 
 let changeColor = document.getElementById('changeColor');
+let revertColor = document.getElementById('revertColor');
 
 chrome.storage.sync.get('color', function(data) {
   changeColor.style.backgroundColor = data.color;
@@ -18,5 +19,13 @@ changeColor.onclick = function(element) {
     chrome.tabs.executeScript(
         tabs[0].id,
         {code: 'document.body.style.backgroundColor = "' + color + '";'});
+  });
+};
+
+revertColor.onclick = () => {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.executeScript(
+        tabs[0].id,
+        {code: 'document.body.style.backgroundColor = "white";'});
   });
 };

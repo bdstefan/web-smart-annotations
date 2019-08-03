@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <style>
+        body {
+            width: 500px;
+            height: 200px;
+            background: beige;
+        }
         button {
             height: 30px;
-            width: 30px;
             outline: none;
         }
     </style>
 </head>
 <body>
-<button id="changeColor"></button>
+    <div class="content">
+        <button id="changeColor">Change page color</button>
+        <button id="revertColor">Revert page color</button>
+    </div>
 <script src="popup.js"></script>
 </body>
 </html>
