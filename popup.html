@@ -4,12 +4,15 @@
     <style>
         body {
             width: 500px;
-            height: 200px;
             background: beige;
         }
         button {
             height: 30px;
             outline: none;
+        }
+        #comment{
+            width: 99%;
+            height: 100px;
         }
     </style>
 </head>
@@ -17,6 +20,23 @@
     <div class="content">
         <button id="changeColor">Change page color</button>
         <button id="revertColor">Revert page color</button>
+        <hr>
+        <form>
+            <label for="comment">Comments:</label>
+            <textarea id="comment" placeholder="Add your comment about this web page where"></textarea>
+            <br>
+            <label>Worth it?</label>
+            <input type="radio" name="trust" value="1"> Yes
+            <input type="radio" name="trust" value="0"> No
+            <input type="radio" name="trust" value="2"> Maybe
+            <br>
+            <label>Real location?</label>
+            <input type="radio" name="location" value="1"> Yes
+            <input type="radio" name="location" value="0"> No
+            <input type="radio" name="location" value="2"> Maybe
+            <br>
+            <button id="annotate">Annotate</button>
+        </form>
     </div>
 <script src="popup.js"></script>
 </body>

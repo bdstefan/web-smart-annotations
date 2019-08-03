@@ -6,6 +6,7 @@
 
 let changeColor = document.getElementById('changeColor');
 let revertColor = document.getElementById('revertColor');
+let annotate    = document.getElementById('annotate');
 
 chrome.storage.sync.get('color', function(data) {
   changeColor.style.backgroundColor = data.color;
@@ -22,10 +23,14 @@ changeColor.onclick = function(element) {
   });
 };
 
-revertColor.onclick = () => {
+revertColor.onclick = ()=> {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.executeScript(
         tabs[0].id,
         {code: 'document.body.style.backgroundColor = "white";'});
   });
+};
+
+annotate.onclick = ()=> {
+  confirm("ready to save?");
 };
